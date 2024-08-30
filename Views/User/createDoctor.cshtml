@@ -1,0 +1,44 @@
+﻿@model medicalApp.Models.Doctor
+
+@{
+    ViewData["Title"] = "createDoctor";
+}
+
+@{
+    IEnumerable<string> hoursList = new List<string> { "9AM - 12PM", "1PM - 4PM", "5PM-9PM" };
+    <div class="container" style="width:80%">
+        <h1 class="text-center">Sign Up As Doctor</h1>
+
+        @using (Html.BeginForm("addDoctor", "User", FormMethod.Post))
+        {
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        @Html.LabelFor(Model => Model.Specialty, new { @class = "form-label" })
+                        @Html.TextBoxFor(Model => Model.Specialty, new { @class = "form-control"})
+                    </div>
+                </div>
+                
+                <div class="row">
+
+                    <div class="col">
+                        @Html.LabelFor(Model => Model.OfficeHours, new { @class = "form-label" })<br />
+                        @Html.DropDownListFor(Model => Model.OfficeHours,new SelectList(hoursList,"Select one") )
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <Button type="submit">Submit</Button>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        }
+
+    </div>
+}

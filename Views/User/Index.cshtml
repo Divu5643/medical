@@ -1,0 +1,62 @@
+﻿@model medicalApp.Models.User
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+   
+
+
+@{
+    IEnumerable<string> strList = new List<string> { "Doctor", "Patient", "Admin"};
+    <div class="container" style="width:80%">
+        <h1 class="text-center" >Sign Up</h1>
+
+        @using (Html.BeginForm("createUser", "User",FormMethod.Post))
+        {
+        <div class="container">
+          <div class="row">
+            <div class="col">
+            @Html.LabelFor(Model=>Model.Email ,new{@class ="form-label"})
+            @Html.TextBoxFor(Model=>Model.Email,new {@class ="form-control" , @type="email"})
+            </div>
+            <div class="col">
+            @Html.LabelFor(Model=>Model.Password ,new{@class ="form-label"})
+            @Html.TextBoxFor(Model=>Model.Password,new {@class ="form-control", @type="password"})
+          </div>
+
+            </div>
+                <div class="row">
+                    <div class="col">
+                        @Html.LabelFor(Model => Model.FirstName, new { @class = "form-label" })
+                        @Html.TextBoxFor(Model => Model.FirstName, new { @class = "form-control" })
+                    </div>
+                    <div class="col">
+                        @Html.LabelFor(Model => Model.LastName, new { @class = "form-label" })
+                        @Html.TextBoxFor(Model => Model.LastName, new { @class = "form-control" })
+                    </div>
+
+                </div>
+                <div class="row">
+                   
+                    <div class="col">
+                        @Html.LabelFor(Model => Model.Role, new { @class = "form-label" })<br />
+                        @Html.DropDownListFor(Model=>Model.Role,new SelectList(strList,"select Option"),new {@class="form-select form-select-lg mb-3"} )
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <Button type="submit" class="btn btn-primary w-100">Submit</Button>
+                    </div>
+                   
+
+                </div>
+        
+        </div>    
+        
+        
+        }
+
+    </div>
+}
